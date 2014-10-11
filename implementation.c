@@ -30,6 +30,21 @@ int readChoice()
 }
 
 /*
+ Internal function to create node
+ */
+ 
+Node *createNode(void *ptr)
+{
+    Node* node = (Node *)malloc(sizeof(Node *));
+    if (!node) {
+        return node;
+    }
+    node->ptr = ptr;
+    node->next = NULL;
+    return node;
+}
+
+/*
  Adds Node at the end of list
  Input: 
     head: Address of head to add
@@ -40,8 +55,27 @@ int readChoice()
 int addNode_End(Node **head, void *ptr)
 {
     printf("In %s\n",__FUNCTION__);
-    
-    return 1;
+    Node *tmp = NULL;
+    Node *node = createNode(ptr);
+    if (!head) {
+        printf("NULL is passed\n");
+        return FALSE;
+    }
+    if (!node) {
+        printf("Not enough memory\n");
+        return FALSE;
+    }
+    tmp = *head;
+    //Head creation
+    if (!(*head)) {
+        (*head) = node;
+        return TRUE;
+    }
+    while (tmp->next) {
+        tmp = tmp->next;
+    }
+    tmp->next = node;
+    return TRUE;
 }
 
 int addNode_Begining(Node **head, void *ptr)
@@ -56,25 +90,45 @@ int addNode_At_Index(Node **head, void *ptr, int index)
     return 1;
 }
 
-int deleteNode_End(Node **head, void *ptr)
+int deleteNode_End(Node **head)
 {
     printf("In %s\n",__FUNCTION__);
     return 1;
 }
 
-int deleteNode_Begining(Node **head, void *ptr)
+int deleteNode_Begining(Node **head)
 {
     printf("In %s\n",__FUNCTION__);
     return 1;
 }
 
-int deleteNode_At_Index(Node **head, void *ptr, int index)
+int deleteNode_At_Index(Node **head, int index)
 {
     printf("In %s\n",__FUNCTION__);
     return 1;
 }
 
-void displayList(Node *head)
+void displayList(Node *head, char c)
 {
     printf("In %s\n",__FUNCTION__);
+    printf("List is \n");
+    switch (c) {
+        case 'i':
+            while (head) {
+                printf("data: %d   next:%p \n", *((int *)(head->ptr)) ,head->next);
+                head = head->next;
+            }
+            break;
+        case 'c':
+            while (head) {
+                printf("string: %s   next:%p \n", ((char *)(head->ptr)) ,head->next);
+                head = head->next;
+            }
+            break;
+            
+        default:
+            printf("The format is not supported\n");
+            break;
+    }
+    
 }

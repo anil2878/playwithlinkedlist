@@ -3,48 +3,57 @@
 int main()
 {
     Node *head=NULL;
-    int i;
-    void *ptr=NULL;
+    int i,j;
+    int *ptr;
     while (1) {
         i = readChoice();
-        printf("Recieved:%d\n",i);
+        //LOG("Recieved:\n");
         switch (i) {
             case 0:
-                printf("Displaying List\n");
-                displayList(head);
+                LOG("Displaying List\n");
+                displayList(head,'i');
                 break;
             case 1:
-                printf("Adding Node at Begining\n");
-                i = addNode_Begining(&head, ptr);
+                LOG("Adding Node at Begining\n");
+                ptr =(int *)malloc(sizeof(int));
+                LOG("Enter data to add\n");
+                scanf("%d",ptr);
+                i = addNode_Begining(&head, (void *)ptr);
                 break;
             case 2:
-                printf("Adding Node at End\n");
-                i = addNode_End(&head, ptr);
+                LOG("Adding Node at End\n");
+                ptr =(int *)malloc(sizeof(int));
+                LOG("Enter data to add\n");
+                scanf("%d",ptr);
+                i = addNode_End(&head, (void *)ptr);
                 break;
             case 3:
-                printf("Adding Node at Index\n");
-                printf("Enter Index\n");
-                scanf("%d",&i);
-                i = addNode_At_Index(&head, ptr,i);
+                LOG("Adding Node at Index\n");
+                ptr =(int *)malloc(sizeof(int));                
+                LOG("Enter data to add\n");
+                scanf("%d",ptr);
+                LOG("Enter Index\n");
+                scanf("%d",&j);
+                i = addNode_At_Index(&head, (void *)ptr,j);
                 break;
             case 4:
-                printf("Deleting Node at Begining\n");
-                i = deleteNode_Begining(&head, ptr);
+                LOG("Deleting Node at Begining\n");
+                i = deleteNode_Begining(&head);
                 
                 break;
             case 5:
-                printf("Deleting Node at End\n");
-                i = deleteNode_End(&head, ptr);
+                LOG("Deleting Node at End\n");
+                i = deleteNode_End(&head);
                 
                 break;
             case 6:
-                printf("Deleting Node at Index\n");
-                printf("Enter Index\n");
+                LOG("Deleting Node at Index\n");
+                LOG("Enter Index\n");
                 scanf("%d",&i);
-                i = deleteNode_At_Index(&head, ptr,i);
+                i = deleteNode_At_Index(&head,i);
                 break;
             default:
-                printf("Enter choice between 0 to 6");
+                LOG("Enter choice between 0 to 6");
                 break;
         }
 
