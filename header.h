@@ -15,16 +15,15 @@ typedef struct node
     struct node *next;
 }Node;
 
-int readInt();
-Node *createHead();
-Node *addNode_End(Node **head, void *ptr);
-Node *addNode_Begining(Node **head, void *ptr);
-Node *addNode_At_Index(Node **head, void *ptr, int index);
+int readChoice();
+int addNode_End(Node **head, void *ptr);
+int addNode_Begining(Node **head, void *ptr);
+int addNode_At_Index(Node **head, void *ptr, int index);
 
 
-Node *deleteNode_End(Node **head, void *ptr);
-Node *deleteNode_Begining(Node **head, void *ptr);
-Node *deleteNode_At_Index(Node **head, void *ptr, int index);
+int deleteNode_End(Node **head, void *ptr);
+int deleteNode_Begining(Node **head, void *ptr);
+int deleteNode_At_Index(Node **head, void *ptr, int index);
 
 void displayList(Node *head);
 
