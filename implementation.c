@@ -81,6 +81,24 @@ int addNode_End(Node **head, void *ptr)
 int addNode_Begining(Node **head, void *ptr)
 {
     printf("In %s\n",__FUNCTION__);
+    Node *tmp=NULL;
+    Node *node = createNode(ptr);
+    if (!head) {
+        printf("NULL is passed\n");
+        return FALSE;
+    }
+    if (!node) {
+        printf("Not enough memory\n");
+        return FALSE;
+    }
+    //Head creation
+    if (!(*head)) {
+        (*head) = node;
+        return TRUE;
+    }
+    tmp = (*head);
+    node->next = (*head);
+    (*head) = node;
     return 1;
 }
 
