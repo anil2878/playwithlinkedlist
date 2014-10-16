@@ -9,9 +9,8 @@
 #define TRUE 0
 #define FALSE -1
 
-//#define log printf("(%s):(%d)  ",__FUNCTION__, __LINE__);printf
-//Implement proper logging
-#define LOG( s ) printf( "(%s):(%d)%s", __FUNCTION__, __LINE__, s )
+#define LOG(formatstring,... ) printf( "(%s):(%d)" formatstring"\n", __FUNCTION__, __LINE__, __VA_ARGS__)
+
 typedef struct node
 {
     void *ptr;
@@ -29,4 +28,5 @@ int deleteNode_Begining(Node **head);
 int deleteNode_At_Index(Node **head, int index);
 
 void displayList(Node *head, char c);
-
+int lengthList(Node *head);
+void reverseList(Node **head);
